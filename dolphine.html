@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+ <link rel="stylesheet" type="text/css" href="box.css">
+</head>
+<body style="background: #0e5d5e;">
+
+<img src="docker.gif" id="d">
+
+
+<div class="box"> <h2>[root@localhost]# <input type="text" id="inp" placeholder="Type your command ">&nbsp;&nbsp;&nbsp;
+<button  id="but" onclick="html()"  class="btn">Run</button></h2>
+
+	<pre>
+	<div id="result"></div>
+	</pre>
+
+  </div>
+</body>
+
+<script>
+function html(){
+but = document.getElementById("inp").value
+var hrx = new XMLHttpRequest();
+hrx.open("GET" , "http://192.168.43.96/cgi-bin/app.py?x=" + but,true);
+hrx.send();
+hrx.onload = function(){
+var output = hrx.responseText;
+document.getElementById('result').innerHTML = output;
+}
+}
+</script>
+
+
+</html>
+
